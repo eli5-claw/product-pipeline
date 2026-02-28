@@ -1,0 +1,42 @@
+/target
+**/*.rs.bk
+Cargo.lock
+*.swp
+*.swo
+*~
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Config with secrets
+config/local.toml
+config/production.toml
+.env
+
+# Logs
+*.log
+logs/
+
+# Build artifacts
+dist/
+build/
+
+# Test coverage
+tarpaulin-report.html
+cobertura.xml
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate*
+terraform/*.tfvars
+
+# Docker
+.dockerignore
+
+# Temporary files
+tmp/
+temp/
+*.tmp

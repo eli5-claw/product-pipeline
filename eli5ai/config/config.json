@@ -1,0 +1,22 @@
+{
+  "kimi_api_key": null,
+  "typefully_api_key": null,
+  "dune_api_key": null,
+  "x_api_key": null,
+  "x_api_secret": null,
+  "x_access_token": null,
+  "x_access_secret": null,
+  "openai_key": null,
+  "anthropic_key": null,
+  "publishing": {
+    "auto_publish": false,
+    "use_typefully": true,
+    "post_times": ["08:00", "16:00"],
+    "timezone": "UTC"
+  },
+  "content": {
+    "threads_per_day": 2,
+    "max_tweets_per_thread": 10,
+    "include_infographic": true
+  }
+}

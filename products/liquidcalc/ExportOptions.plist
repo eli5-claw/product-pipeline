@@ -1,0 +1,12 @@
+{
+  "compileBitcode": false,
+  "method": "app-store",
+  "provisioningProfiles": {
+    "com.liquidcalc.app": "LiquidCalc App Store"
+  },
+  "signingCertificate": "iPhone Distribution",
+  "signingStyle": "manual",
+  "stripSwiftSymbols": true,
+  "teamID": "YOUR_TEAM_ID",
+  "thinning": "<none>"
+}

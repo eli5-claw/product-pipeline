@@ -1,0 +1,18 @@
+[Unit]
+Description=Polymarket Autobetting Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/.openclaw/workspace/poly-autobetting
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=/root/.openclaw/workspace/poly-autobetting/.env
+ExecStart=/usr/bin/python3 /root/.openclaw/workspace/poly-autobetting/scripts/telegram_bot.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

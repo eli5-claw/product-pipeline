@@ -1,0 +1,15 @@
+{
+  "bundleId": "com.liquidcalc.app",
+  "teamId": "YOUR_TEAM_ID",
+  "version": "1.0.0",
+  "buildNumber": "1",
+  "displayName": "LiquidCalc",
+  "minOSVersion": "15.0",
+  "devices": ["iPhone", "iPad"],
+  "orientation": ["portrait"],
+  "capabilities": [],
+  "entitlements": {
+    "com.apple.security.app-sandbox": true,
+    "com.apple.security.network.client": true
+  }
+}

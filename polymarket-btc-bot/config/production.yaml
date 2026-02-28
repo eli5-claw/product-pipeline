@@ -1,0 +1,44 @@
+# Production configuration - AWS eu-west-2 (London) deployment
+# Copy this file to config/production.yaml and fill in your credentials
+
+trading:
+  scan_interval_ms: 100           # 10 scans per second
+  min_edge_threshold: 0.02        # 2% minimum edge
+  min_trade_size_usd: 10.0
+  risk_free_rate: 0.05
+  default_volatility: 0.6
+  max_open_positions: 10
+
+binance:
+  websocket_url: "wss://stream.binance.com:9443/ws/btcusdt@trade"
+  symbol: "BTCUSDT"
+  reconnect_interval_ms: 5000
+
+polymarket:
+  api_url: "https://clob.polymarket.com"
+  ws_url: "wss://ws-sub.clob.polymarket.com/ws"
+  # CRITICAL: Set these via environment variables for security
+  # BOT_POLYMARKET__API_KEY
+  # BOT_POLYMARKET__API_SECRET
+  # BOT_POLYMARKET__PASSPHRASE
+  # BOT_POLYMARKET__WALLET_PRIVATE_KEY
+  api_key: ""
+  api_secret: ""
+  passphrase: ""
+  wallet_private_key: ""
+  rpc_url: "https://polygon-rpc.com"
+  chain_id: 137
+
+pricing:
+  use_implied_volatility: true
+  volatility_lookback_hours: 24
+  volatility_update_interval_ms: 60000
+
+risk:
+  kelly_fraction: 0.25            # Quarter Kelly
+  max_position_size_usd: 1000.0   # $1k max per position
+  max_daily_loss_usd: 5000.0      # Stop at $5k daily loss
+  max_drawdown_percent: 0.10      # Stop at 10% drawdown
+  correlation_threshold: 0.7
+  stop_loss_enabled: true
+  stop_loss_percent: 0.05

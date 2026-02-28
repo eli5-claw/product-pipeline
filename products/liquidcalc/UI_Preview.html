@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiquidCalc - UI Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1c1c1e;
+            color: #fff;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #ff9500;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #8e8e93;
+            margin-bottom: 40px;
+        }
+        
+        .screens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .phone-frame {
+            width: 320px;
+            height: 680px;
+            background: #000;
+            border-radius: 40px;
+            padding: 15px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #1c1c1e;
+            border-radius: 30px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .screen-header {
+            background: #1c1c1e;
+            padding: 50px 20px 15px;
+            border-bottom: 1px solid #2c2c2e;
+        }
+        
+        .screen-title {
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .screen-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .section {
+            background: #2c2c2e;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .section-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #8e8e93;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+        
+        .input-row {
+            margin-bottom: 12px;
+        }
+        
+        .input-label {
+            font-size: 13px;
+            color: #8e8e93;
+            margin-bottom: 6px;
+        }
+        
+        .input-field {
+            background: #3a3a3c;
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .input-placeholder {
+            color: #8e8e93;
+            font-size: 15px;
+        }
+        
+        .input-suffix {
+            color: #8e8e93;
+            font-size: 13px;
+        }
+        
+        .slider-row {
+            margin-top: 8px;
+        }
+        
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        
+        .slider-value {
+            color: #ff9500;
+            font-weight: 600;
+        }
+        
+        .slider-track {
+            height: 4px;
+            background: #3a3a3c;
+            border-radius: 2px;
+            position: relative;
+        }
+        
+        .slider-fill {
+            height: 100%;
+            width: 40%;
+            background: #ff9500;
+            border-radius: 2px;
+        }
+        
+        .btn {
+            background: #ff9500;
+            color: #000;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+        }
+        
+        .result-card {
+            background: #3a3a3c;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        
+        .result-label {
+            font-size: 12px;
+            color: #8e8e93;
+            margin-bottom: 8px;
+        }
+        
+        .result-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #ff3b30;
+        }
+        
+        .result-unit {
+            font-size: 14px;
+            color: #8e8e93;
+            margin-left: 4px;
+        }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        
+        .result-small {
+            background: #3a3a3c;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        
+        .result-small-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #34c759;
+        }
+        
+        .warning {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #ff3b30;
+            font-size: 13px;
+            margin-top: 12px;
+        }
+        
+        .tab-bar {
+            background: #1c1c1e;
+            border-top: 1px solid #2c2c2e;
+            padding: 10px 0 30px;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .tab {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #ff9500;
+        }
+        
+        .tab-icon {
+            font-size: 20px;
+        }
+        
+        .tab-label {
+            font-size: 11px;
+        }
+        
+        .tab-inactive {
+            color: #8e8e93;
+        }
+        
+        .segmented {
+            display: flex;
+            background: #3a3a3c;
+            border-radius: 8px;
+            padding: 2px;
+        }
+        
+        .segment {
+            flex: 1;
+            padding: 8px;
+            text-align: center;
+            font-size: 13px;
+            border-radius: 6px;
+        }
+        
+        .segment-active {
+            background: #ff9500;
+            color: #000;
+            font-weight: 500;
+        }
+        
+        .screen-label {
+            text-align: center;
+            margin-top: 15px;
+            color: #8e8e93;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 LiquidCalc</h1>
+        <p class="subtitle">Crypto Futures Calculator - UI Preview</p>
+        
+        <div class="screens-grid">
+            <!-- Screen 1: Liquidation Calculator -->
+            <div>
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <div class="screen-header">
+                            <div class="screen-title">Liquidation Calc</div>
+                        </div>
+                        <div class="screen-content">
+                            <div class="section">
+                                <div class="segmented">
+                                    <div class="segment segment-active">Isolated</div>
+                                    <div class="segment">Cross</div>
+                                </div>
+                            </div>
+                            
+                            <div class="section">
+                                <div class="input-row">
+                                    <div class="input-label">Position</div>
+                                    <div class="segmented">
+                                        <div class="segment segment-active">Long</div>
+                                        <div class="segment">Short</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-row">
+                                    <div class="input-label">Entry Price</div>
+                                    <div class="input-field">
+                                        <span class="input-placeholder">45000</span>
+                                        <span class="input-suffix">USDT</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-row">
+                                    <div class="input-label">Position Size</div>
+                                    <div class="input-field">
+                                        <span class="input-placeholder">1000</span>
+                                        <span class="input-suffix">USDT</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="slider-row">
+                                    <div class="slider-label">
+                                        <span>Leverage</span>
+                                        <span class="slider-value">10x</span>
+                                    </div>
+                                    <div class="slider-track">
+                                        <div class="slider-fill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="btn">Calculate Liquidation Price</button>
+                            
+                            <div class="section">
+                                <div class="section-label">Results</div>
+                                <div class="result-card">
+                                    <div class="result-label">Liquidation Price</div>
+                                    <div class="result-value">40,500<span class="result-unit">USDT</span></div>
+                                </div>
+                                <div class="result-grid">
+                                    <div class="result-small">
+                                        <div class="result-label">Distance</div>
+                                        <div class="result-small-value">10.00%</div>
+                                    </div>
+                                    <div class="result-small">
+                                        <div class="result-label">MM Required</div>
+                                        <div class="result-small-value" style="color: #ff9500;">5.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-bar">
+                            <div class="tab">
+                                <span class="tab-icon">⚠️</span>
+                                <span class="tab-label">Liquidation</span>
+                            </div>
+                            <div class="tab tab-inactive">
+                                <span class="tab-icon">💰</span>
+                                <span class="tab-label">Position</span>
+                            </div>
+                            <div class="tab tab-inactive">
+                                <span class="tab-icon">📈</span>
+                                <span class="tab-label">P&L</span>
+                            </div>
+                            <div class="tab tab-inactive">
+                                <span class="tab-icon">⚙️</span>
+                                <span class="tab-label">Settings</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="screen-label">Liquidation Calculator</div>
+            </div>
+            
+            <!-- Screen 2: Position Sizing -->
+            <div>
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <div class="screen-header">
+                            <div class="screen-title">Position Sizing</div>
+                        </div>
+                        <div class="screen-content">
+                            <div class="section">
+                                <div class="section-label">Account</div>
+                                <div class="input-row">
+                                    <div class="input-label">Account Balance</div>
+                                    <div class="input-field">
+                                        <span class="input-placeholder">10000</span>
+                                        <span class="input-suffix">USDT</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="slider-row">
+                                    <div class="slider-label">
+                                        <span>Risk Per Trade</span>
+                                        <span class="slider-value">2%</span>
+                                    </div>
+                                    <div class="slider-track">
+                                        <div class="slider-fill" style="width: 20%;"></div>
+                                    </div>
+                                </div>
+                                
+                                <div style="font-size: 12px; color: #8e8e93; margin-top: 8px;">
+                                    Risk Amount: 200.00 USDT
+                                </div>
+                            </div>
+                            
+                            <div class="section">
+                                <div class="section-label">Stop Loss</div>
+                                <div class="input-row">
+                                    <div class="input-label">Entry Price</div>
+                                    <div class="input-field">
+                                        <span class="input-placeholder">45000</span>
+                                        <span class="input-suffix">USDT</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-row">
+                                    <div class="input-label">Stop Loss Price</div>
+                                    <div class="input-field">
+                                        <span class="input-placeholder">44000</span>
+                                        <span class="input-suffix">USDT</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="section">
+                                <div class="section-label">Leverage</div>
+                                <div class="slider-row">
+                                    <div class="slider-label">
+                                        <span>Leverage</span>
+                                        <span class="slider-value">10x</span>
+                                    </div>
+                                    <div class="slider-track">
+                                        <div class="slider-fill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="btn">Calculate Position Size</button>
+                            
+                            <div class="section">
+                                <div class="section-label">Position Size</div>
+                                <div class="result-card" style="border: 2px solid #34c759;">
+                                    <div class="result-label">Position Size</div>
+                                    <div class="result-value" style="color: #34c759;">9000<span class="result-unit">USDT</span></div>
+                                </div>
+                                <div class="result-grid">
+                                    <div class="result-small">
+                                        <div class="result-label">Margin Required</div>
+                                        <div class="result-small-value" style="color: #0a84ff;">900</div>
+                                    </div>
+                                    <div class="result-small">
+                                        <div class="result-label">Max Leverage</div>
+                                        <div class="result-small-value" style="color: #ff9500;">10x</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-bar">
+                            <div class="tab tab-inactive">
+                                <span class="tab-icon">⚠️</span>
+                                <span class="tab-label">Liquidation</span>
+                            </div>
+                            <div class="tab">
+                                <span class="tab-icon">💰</span>
+                                <span class="tab-label">Position</span>
+                            </div>
+                            <div class="tab tab-inactive">
+                                <span class="tab-icon">📈</span>
+                                <span class="tab-label">P&L</span>
+                            </div>
+                            <div class="tab tab-inactive">
+                                <span class="tab-icon">⚙️</span>
+                                <span class="tab-label">Settings</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="screen-label">Position Sizing</div>
+            </div>
+            
+            <!-- Screen 3: P&L Calculator -->
+            <div>
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <div class="screen-header">
+                            <div class="screen-title">P&L Calculator</div>
+                        </div>
+                        <div class="screen-content">
+                            <div class="section">
+                                <div class="section-label">Trade Direction</div>
+                                <div class="segmented">
+                                    <div class="segment segment-active">Long</div>
+                                    <div class="segment">Short</div>
+                                </div>
+                            </div>
+                            
+                            <div class="section">
+                                <div class="section-label">Trade Details</div>
+                                <div class="input-row">
+                                    <div class="input-label">Entry Price</div>
+                                    <div class="input-field">
+                                        <span class="input-placeholder">45000</span>
+                                        <span class="input-suffix">USDT</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-row">
+                                    <div class="input-label">Exit Price</div>
+                                    <div class="input-field">
+                                        <span class="input-placeholder">50000</span>
+                                        <span class="input-suffix">USDT</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-row">
+                                    <div class="input-label">Position Size</div>
+                                    <div class="input-field">
+                                        <span class="input-placeholder">1000</span>
+                                        <span class="input-suffix">USDT</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="slider-row">
+                                    <div class="slider-label">
+                                        <span>Leverage</span>
+                                        <span class="slider-value">10x</span>
+                                    </div>
+                                    <div class="slider-track">
+                                        <div class="slider-fill"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-row" style="margin-top: 12px;">
+                                    <div class="input-label">Trading Fee</div>
+                                    <div class="input-field">
+                                        <span class="input-placeholder">0.05</span>
+                                        <span class="input-suffix">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="btn">Calculate P&L</button>
+                            
+                            <div class="section">
+                                <div class="section-label">Trade Results</div>
+                                <div class="result-card" style="border: 2px solid #34c759;">
+                                    <div class="result-label">Profit/Loss</div>
+                                    <div class="result-value" style="color: #34c759;">+1111.11<span class="result-unit">USDT</span></div>
+                                </div>
+                                <div class="result-grid">
+                                    <div class="result-small">
+                                        <div class="result-label">ROI</div>
+                                        <div class="result-small-value">111.11%</div>
+                                    </div>
+                                    <div class="result-small">
+                                        <div class="result-label">ROE</div>
+                                        <div class="result-small-value">1111.11%</div>
+                                    </div>
+                                </div>
+                                <div class="result-grid" style="margin-top: 12px;">
+                                    <div class="result-small">
+                                        <div class="result-label">Fees Paid</div>
+                                        <div class="result-small-value" style="color: #ff9500;">1.05</div>
+                                    </div>
+                                    <div class="result-small">
+                                        <div class="result-label">Net P&L</div>
+                                        <div class="result-small-value">1110.06</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-bar">
+                            <div class="tab tab-inactive">
+                                <span class="tab-icon">⚠️</span>
+                                <span class="tab-label">Liquidation</span>
+                            </div>
+                            <div class="tab tab-inactive">
+                                <span class="tab-icon">💰</span>
+                                <span class="tab-label">Position</span>
+                            </div>
+                            <div class="tab">
+                                <span class="tab-icon">📈</span>
+                                <span class="tab-label">P&L</span>
+                            </div>
+                            <div class="tab tab-inactive">
+                                <span class="tab-icon">⚙️</span>
+                                <span class="tab-label">Settings</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="screen-label">P&L Calculator</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

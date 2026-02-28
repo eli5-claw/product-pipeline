@@ -1,0 +1,22 @@
+{
+  "bankrSignals": {
+    "wallet": "0x4c9a0c3b64f03183a30543549513038438e0a8e9",
+    "lastCheck": null,
+    "openSignalIds": []
+  },
+  "productResearch": {
+    "lastScan": "2026-02-28T08:31:00+08:00",
+    "sourcesChecked": ["Product Hunt", "GitHub", "Base Ecosystem", "AI Agent Trends", "Kimi Search"],
+    "discoveredThisHour": 5
+  },
+  "github": {
+    "repo": "eli5defi",
+    "lastPush": null,
+    "pendingCommits": []
+  },
+  "wallet": {
+    "address": "0x4c9a0c3b64f03183a30543549513038438e0a8e9",
+    "lastBalanceCheck": null,
+    "eliToken": "0xd57fb1a4257916bC880351AC64b3b7C5caCC9ba3"
+  }
+}

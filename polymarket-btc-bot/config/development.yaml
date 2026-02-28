@@ -1,0 +1,38 @@
+# Development configuration
+trading:
+  scan_interval_ms: 500
+  min_edge_threshold: 0.01
+  min_trade_size_usd: 5.0
+  risk_free_rate: 0.05
+  default_volatility: 0.6
+  max_open_positions: 5
+
+binance:
+  websocket_url: "wss://stream.binance.com:9443/ws/btcusdt@trade"
+  symbol: "BTCUSDT"
+  reconnect_interval_ms: 5000
+
+polymarket:
+  api_url: "https://clob.polymarket.com"
+  ws_url: "wss://ws-sub.clob.polymarket.com/ws"
+  # Add your credentials here or use environment variables
+  api_key: ""
+  api_secret: ""
+  passphrase: ""
+  wallet_private_key: ""
+  rpc_url: "https://polygon-rpc.com"
+  chain_id: 137
+
+pricing:
+  use_implied_volatility: true
+  volatility_lookback_hours: 24
+  volatility_update_interval_ms: 60000
+
+risk:
+  kelly_fraction: 0.25
+  max_position_size_usd: 100.0
+  max_daily_loss_usd: 500.0
+  max_drawdown_percent: 0.10
+  correlation_threshold: 0.7
+  stop_loss_enabled: true
+  stop_loss_percent: 0.05

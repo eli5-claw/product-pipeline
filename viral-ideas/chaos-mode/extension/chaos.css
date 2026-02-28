@@ -1,0 +1,246 @@
+/* Chaos Mode - Styles */
+/* chaos.css */
+
+.chaos-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: chaosFadeIn 0.3s ease;
+}
+
+@keyframes chaosFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.chaos-modal {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: chaosBounce 0.5s ease;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@keyframes chaosBounce {
+  0% { transform: scale(0.5); opacity: 0; }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.chaos-modal h2 {
+  margin: 0 0 20px 0;
+  font-size: 28px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.chaos-content {
+  font-size: 20px;
+  line-height: 1.6;
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.chaos-dismiss,
+.chaos-complete {
+  background: #fff;
+  color: #764ba2;
+  border: none;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.chaos-dismiss:hover,
+.chaos-complete:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Dance Break */
+.dance-break {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+}
+
+.dance-timer {
+  font-size: 72px;
+  font-weight: bold;
+  margin: 20px 0;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dance-animation {
+  font-size: 48px;
+  animation: danceBounce 0.5s infinite alternate;
+}
+
+@keyframes danceBounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+/* Meme Flood */
+.meme-flood {
+  background: transparent !important;
+  pointer-events: none;
+}
+
+.meme-flood .meme-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  padding: 20px 40px;
+  border-radius: 10px;
+  color: white;
+  z-index: 1000000;
+  pointer-events: auto;
+}
+
+.floating-meme {
+  position: fixed;
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: transform 0.2s;
+  animation: memeFloat 3s ease-in-out infinite;
+  pointer-events: auto;
+}
+
+.floating-meme:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+@keyframes memeFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+.meme-counter {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Trivia */
+.trivia {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
+}
+
+.trivia-question {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.trivia-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.trivia-option {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.trivia-option:hover {
+  transform: scale(1.02);
+  background: white;
+}
+
+.trivia-option:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Fortune */
+.fortune {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%) !important;
+}
+
+/* Puppy */
+.puppy {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%) !important;
+  color: #333 !important;
+}
+
+.puppy-img {
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin: 20px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.puppy-timer {
+  font-size: 36px;
+  font-weight: bold;
+  color: #764ba2;
+}
+
+/* Roast specific */
+.roast .chaos-content {
+  font-size: 24px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .chaos-modal {
+    padding: 30px 20px;
+    margin: 20px;
+  }
+  
+  .chaos-modal h2 {
+    font-size: 24px;
+  }
+  
+  .chaos-content {
+    font-size: 18px;
+  }
+  
+  .dance-timer {
+    font-size: 56px;
+  }
+  
+  .trivia-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .puppy-img {
+    width: 250px;
+    height: 250px;
+  }
+}
