@@ -32,6 +32,66 @@
 
 ### In Discovery
 
+#### 1. Coinbase Agentic Wallets - AI Agent Payment Infrastructure
+- **Source:** Coinbase Developer Platform (Feb 11, 2026)
+- **URL:** https://www.coinbase.com/developer-platform/discover/launches/agentic-wallets
+- **Description:** New wallet infrastructure built specifically for autonomous AI agents. Enables bots to hold funds, send payments, trade, and earn with built-in security guardrails. Announced Feb 11, 2026.
+- **Score:** 93/100 ⭐ **HIGHEST POTENTIAL**
+  - Market Size: 25/25 (Platform play for entire AI agent economy)
+  - Trend Velocity: 20/20 (Coinbase backing = instant legitimacy)
+  - Feasibility: 18/20 (Clear SDK, well-documented)
+  - Monetization: 19/20 (Transaction fees, premium features)
+  - Competition: 11/15 (First-mover in agent-specific wallets)
+- **Opportunity:** Build OpenClaw skill for Agentic Wallet integration; create agent-to-agent payment flows; build spending limit management dashboard
+
+#### 2. ChartGen AI - AI-Powered Dashboard & Visualization
+- **Source:** Product Hunt #1 (Feb 24, 2026)
+- **URL:** https://chartgen.ai/
+- **Description:** AI chart generator that expanded from charts to full dashboards, diagrams, and PPT. Hit #1 on Product Hunt. Natural language to visualization.
+- **Score:** 87/100
+  - Market Size: 23/25 (Data viz market is massive)
+  - Trend Velocity: 19/20 (Just hit #1, hot right now)
+  - Feasibility: 17/20 (Existing AI APIs for visualization)
+  - Monetization: 17/20 (SaaS subscriptions, enterprise)
+  - Competition: 11/15 (Tableau/PowerBI exist, but AI-native is new)
+- **Opportunity:** Crypto-specific dashboard builder with on-chain data integration; DeFi portfolio visualizations; whale wallet tracking charts
+
+#### 3. Senpi - Personal Trading Agents for Hyperliquid
+- **Source:** Launched Feb 24, 2026 / OpenClaw-powered
+- **URL:** https://senpi.io/
+- **Description:** First personal trading agents built specifically for Hyperliquid derivatives exchange. Powered by OpenClaw framework. Supports $100M+ in trading volume.
+- **Score:** 89/100
+  - Market Size: 24/25 (Hyperliquid = fastest growing perp DEX)
+  - Trend Velocity: 20/20 (Launched days ago, already trending)
+  - Feasibility: 16/20 (OpenClaw + Bankr + Hyperliquid API)
+  - Monetization: 18/20 (Performance fees, subscription tiers)
+  - Competition: 11/15 (First-mover on Hyperliquid specifically)
+- **Opportunity:** Build competing/agents with different strategies; create strategy marketplace; build performance analytics dashboard
+
+#### 4. ERC-8004 Trustless Agents Standard
+- **Source:** Ethereum Improvement Proposal / 8004scan
+- **URL:** https://eips.ethereum.org/EIPS/eip-8004
+- **Description:** New standard for on-chain AI agent identity, reputation, and validation. 20,000+ agents deployed across Ethereum, BNB Chain, Base since launch.
+- **Score:** 85/100
+  - Market Size: 23/25 (Standard = entire ecosystem)
+  - Trend Velocity: 19/20 (20k agents in 2 weeks = explosive)
+  - Feasibility: 16/20 (Standard is new, tooling immature)
+  - Monetization: 15/20 (Services, verification fees)
+  - Competition: 12/15 (Other standards emerging)
+- **Opportunity:** Build agent registry explorer; reputation scoring system; OpenClaw skill for ERC-8004 registration
+
+#### 5. x402 Protocol - HTTP Payment Standard for AI Agents
+- **Source:** Coinbase / Nevermined / Multiple chains
+- **URL:** https://x402.org/
+- **Description:** HTTP 402 Payment Standard enabling AI agents to pay for APIs, data, compute autonomously. $600M+ annualized payment volume by Feb 2026.
+- **Score:** 88/100
+  - Market Size: 24/25 (API economy = massive)
+  - Trend Velocity: 19/20 (Enterprise adoption: Google, AWS)
+  - Feasibility: 17/20 (Libraries available, clear spec)
+  - Monetization: 18/20 (Gateway fees, premium routing)
+  - Competition: 10/15 (Early, few gateways exist)
+- **Opportunity:** Build x402 payment gateway for crypto APIs; create OpenClaw skill for x402 payments; agent service marketplace with x402 pricing
+
 #### 1. Tana - AI-Native Workspace with Voice Integration
 - **Source:** Product Hunt #1 February 2025
 - **URL:** https://www.producthunt.com/products/tana
