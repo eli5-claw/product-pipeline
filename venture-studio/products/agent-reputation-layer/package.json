@@ -1,0 +1,41 @@
+{
+  "name": "artl",
+  "version": "1.0.0",
+  "description": "Agent Reputation & Trust Layer - Universal reputation system for AI agents",
+  "private": true,
+  "scripts": {
+    "dev": "docker-compose up -d",
+    "dev:local": "concurrently \"npm run dev:api\" \"npm run dev:web\" \"npm run dev:mcp\"",
+    "dev:api": "cd src/api && npm run start:dev",
+    "dev:web": "cd src/web && npm run dev",
+    "dev:mcp": "cd src/mcp && npm run dev",
+    "build": "npm run build:shared && npm run build:api && npm run build:web && npm run build:mcp",
+    "build:api": "cd src/api && npm run build",
+    "build:web": "cd src/web && npm run build",
+    "build:mcp": "cd src/mcp && npm run build",
+    "build:shared": "cd src/shared && tsc",
+    "test": "npm run test:api && npm run test:web && npm run test:mcp",
+    "test:api": "cd src/api && npm test",
+    "test:web": "cd src/web && npm test",
+    "test:mcp": "cd src/mcp && npm test",
+    "db:migrate": "cd src/api && npx prisma migrate dev",
+    "db:generate": "cd src/api && npx prisma generate",
+    "db:studio": "cd src/api && npx prisma studio",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "prettier": "^3.2.4",
+    "typescript": "^5.3.3"
+  },
+  "workspaces": [
+    "src/api",
+    "src/web",
+    "src/mcp",
+    "src/shared"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "artl-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server for Agent Reputation & Trust Layer",
+  "main": "dist/index.js",
+  "bin": {
+    "artl-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.4.0",
+    "axios": "^1.6.5",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "typescript": "^5.3.3"
+  }
+}

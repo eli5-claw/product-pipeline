@@ -1,0 +1,163 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String    @id @default(uuid())
+  email            String    @unique
+  name             String?
+  emailVerified    Boolean   @default(false)
+  stripeCustomerId String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  
+  agents        Agent[]
+  sessions      Session[]
+  orgMembers    OrganizationMember[]
+}
+
+model Organization {
+  id                   String   @id @default(uuid())
+  slug                 String   @unique
+  name                 String
+  domain               String?
+  domainVerified       Boolean  @default(false)
+  verificationToken    String?
+  settings             Json     @default("{}")
+  stripeSubscriptionId String?
+  subscriptionTier     String   @default("free")
+  subscriptionStatus   String   @default("active")
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  
+  members OrganizationMember[]
+  agents  Agent[]
+}
+
+model OrganizationMember {
+  id             String   @id @default(uuid())
+  organizationId String
+  userId         String
+  role           String   @default("member")
+  createdAt      DateTime @default(now())
+  
+  organization Organization @relation(fields: [organizationId], references: [id])
+  user         User         @relation(fields: [userId], references: [id])
+  
+  @@unique([organizationId, userId])
+}
+
+model Agent {
+  id                 String   @id @default(uuid())
+  did                String   @unique
+  name               String
+  description        String?
+  type               String
+  identities         Json     @default("{}")
+  reputation         Json     @default("{}")
+  verificationStatus Json     @default("{\"level\": \"none\"}")
+  ownerId            String?
+  organizationId     String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  lastActiveAt       DateTime @default(now())
+  
+  owner        User?          @relation(fields: [ownerId], references: [id])
+  organization Organization?  @relation(fields: [organizationId], references: [id])
+  signals      TrustSignal[]
+  attestations Attestation[]
+  apiKeys      ApiKey[]
+  reputationHistory ReputationHistory[]
+}
+
+model TrustSignal {
+  id                  String    @id @default(uuid())
+  agentId             String
+  sourceType          String
+  sourceName          String
+  sourceUrl           String?
+  sourceVerified      Boolean   @default(false)
+  signalType          String
+  signalSubtype       String?
+  value               Decimal
+  weight              Decimal
+  confidence          Decimal
+  metadata            Json      @default("{}")
+  occurredAt          DateTime
+  recordedAt          DateTime  @default(now())
+  expiresAt           DateTime?
+  verified            Boolean   @default(false)
+  verificationMethod  String?
+  
+  agent Agent @relation(fields: [agentId], references: [id])
+  
+  @@index([agentId])
+  @@index([signalType])
+}
+
+model Attestation {
+  id                 String    @id @default(uuid())
+  agentId            String
+  attesterType       String
+  attesterId         String
+  attesterReputation Int?
+  attestationType    String
+  claim              String
+  evidenceUrls       String[]
+  weight             Decimal?
+  status             String    @default("pending")
+  createdAt          DateTime  @default(now())
+  verifiedAt         DateTime?
+  expiresAt          DateTime?
+  
+  agent Agent @relation(fields: [agentId], references: [id])
+  
+  @@index([agentId])
+}
+
+model ApiKey {
+  id          String    @id @default(uuid())
+  agentId     String
+  keyHash     String    @unique
+  keyPrefix   String
+  name        String?
+  scopes      String[]
+  lastUsedAt  DateTime?
+  expiresAt   DateTime?
+  createdAt   DateTime  @default(now())
+  revokedAt   DateTime?
+  
+  agent Agent @relation(fields: [agentId], references: [id])
+  
+  @@index([agentId])
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  
+  user User @relation(fields: [userId], references: [id])
+}
+
+model ReputationHistory {
+  id            String   @id @default(uuid())
+  agentId       String
+  timestamp     DateTime @default(now())
+  overallScore  Int
+  confidence    Decimal
+  signalsCount  Int
+  breakdown     Json
+  
+  agent Agent @relation(fields: [agentId], references: [id])
+  
+  @@index([agentId])
+  @@index([timestamp])
+}

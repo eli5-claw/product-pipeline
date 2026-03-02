@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "name": "artl-api",
+  "builds": [
+    {
+      "src": "api/index.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/v1/(.*)",
+      "dest": "/api/index.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.ts"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "VERCEL": "true"
+  }
+}
